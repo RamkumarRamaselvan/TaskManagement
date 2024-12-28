@@ -1,0 +1,34 @@
+@import '../../app/CSS/root.css';
+#customTable ul{
+    list-style-type: none;
+    text-decoration: none;
+    height: 38px;
+}
+#customTable li {
+    float: right;
+    margin-right: 5px;
+}
+#customTable .actcol{
+   flex-basis: 50%;  
+}
+#customTable .actcol a{
+    cursor: pointer;
+ }
+.noDataMsg{
+    text-align: center;
+}
+.responsive_Table{
+    overflow-x: auto;
+}
+.action_div{
+    display: flex;
+    text-align: center;
+}
+#customTable th {
+    background-color: var(--seconry-color)!important;
+    color: var(--primary-color) !important;
+}
+#customTable td {
+    background-color: #343434 !important;
+    color: var(--primary-color) !important;
+}

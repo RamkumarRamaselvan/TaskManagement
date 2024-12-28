@@ -1,0 +1,12 @@
+@import '../../app/CSS/root.css';
+.btn-close {
+    position: absolute;
+    right: 1%;
+    z-index: 999;
+    color: var(--primary-color) !important;
+    background-image: none;
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 1;
+    font-family: cursive;
+}
