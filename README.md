@@ -3,11 +3,11 @@
 
 To get started with this project, you need to install the required dependencies. Follow the steps below:
 1. **Click the URL**:
-        https://github.com/RamkumarRamaselvan/Task-Management/tree/master
+        https://github.com/RamkumarRamaselvan/TaskManagement
 
 2. **Clone the repository**:
 
-   git clone https://github.com/RamkumarRamaselvan/Task-Management.git
+   git clone https://github.com/RamkumarRamaselvan/TaskManagement.git
 
 3. **Navigate into the project directory**:
 
@@ -23,7 +23,7 @@ To get started with this project, you need to install the required dependencies.
         *Start the JSON server on port 3001 by running npx json-server --watch db.json --port 3001, which will serve the mock backend data from db.json.
         *Once both servers are running, the React app will be available at http://localhost:3000 and the JSON server at http://localhost:3001.
 
-if you want to change the JSON server post goto package.json change the "proxy" port and also please change the  
+if you want to change the JSON server post goto package.json change the "proxy":"http://localhost:3001" port and also please change the  
 "scripts": {
     "json-server": "npx json-server --watch db.json --port 3001"
 }
