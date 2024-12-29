@@ -87,7 +87,7 @@ const RegisterPage = () => {
 
   const getUserDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:${proxy}/users`);
+      const response = await fetch(`${proxy}/users`);
 
       if (!response.ok) throw new Error("Invalid credentials");
       const data = await response.json();
@@ -103,7 +103,7 @@ const RegisterPage = () => {
     const valid = validate();
     if (valid) {
       try {
-        const response = await fetch(`http://localhost:${proxy}/users`, {
+        const response = await fetch(`${proxy}/users`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

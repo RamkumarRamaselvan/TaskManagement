@@ -15,7 +15,7 @@ const SignIn = (props) => {
 
   const getUserList = async() => {
     try {
-      const response = await fetch(`http://localhost:${proxy}/users`, {
+      const response = await fetch(`${proxy}/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const SignIn = (props) => {
     e.preventDefault();
     const {username,password} =credentials;
     try {
-      const response = await fetch(`http://localhost:${proxy}/users?username=${username}`);
+      const response = await fetch(`${proxy}/users?username=${username}`);
   
       if (!response.ok) throw new Error("Invalid credentials");
       const data = await response.json();

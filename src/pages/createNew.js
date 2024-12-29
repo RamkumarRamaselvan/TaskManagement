@@ -74,7 +74,7 @@ const CreateTask = (props) => {
             updated: getDate(),
         }
         if (valid) {
-            fetch(`http://localhost:${proxy}/saveData${getData ? `/${getData.id}` : ''}`, {
+            fetch(`${proxy}/saveData${getData ? `/${getData.id}` : ''}`, {
                 method: getData ? 'PUT' : 'POST',
                 headers: {
                     'Content-Type': 'application/json'

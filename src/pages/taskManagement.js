@@ -15,7 +15,7 @@ const TaskTable = () => {
         listAPICall();
     }, []);
     const listAPICall = () => {
-        fetch(`http://localhost:${proxy}/saveData`, {
+        fetch(`${proxy}/saveData`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ const TaskTable = () => {
         setOpenPopup(false);
     }
     const handleDelete = (id) => {
-        fetch(`http://localhost:${proxy}/saveData/${id}`, {
+        fetch(`${proxy}/saveData/${id}`, {
             method: 'DELETE'
         })
             .then(() => {
