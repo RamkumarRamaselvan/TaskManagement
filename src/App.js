@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { authRoutes } from "./app/router.js";
 import SignIn from "./pages/login.js";
 import TopNavigation from "./pages/navigation.js";
-import "./app/CSS/internal.css";
+import "./app/styles/internal.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
