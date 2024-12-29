@@ -30,3 +30,69 @@ if you want to change the JSON server post goto package.json change the "proxy" 
 this comment using to run the JSON server so need to change the port in the comment.
 
 
+### API Used in the Project
+
+    In this project used a JSON server as a Backend
+
+    1.Login API
+        http://localhost:3001/users?username={username}
+        Request method GET
+        need to pass the username in the API
+        useage: get the user login
+
+    2.Get register User list
+        http://localhost:3001/users
+        Request method GET
+        useage: get the list of registed User
+
+    3.Register a User 
+
+        http://localhost:3001/users
+        Request method POST
+        useage: Save a new user to the Register
+        should be give a pass the data
+        Payload: {
+                firstName: '',
+                lastName: '',
+                username: '',
+                password: '',
+                email: '',
+                mobile: '',
+            }
+    
+    4.List the task
+        
+        http://localhost:3001/saveData
+        Request method : GET
+        useage : list the saved task
+    5.Delete the Task
+        http://localhost:3001/saveData/{id}
+        Request method : DELETE
+        useage: To delete the task in the saved list
+        should pass the task id to the API
+    6.Save API for TASK
+        http://localhost:3001/saveData
+        Request method : POST
+        useage : To save the new Task 
+        should be pass a payload
+        payload = {
+            taskName:"",
+            assignee:"",
+            status:"",
+            reporter: "",
+            created: "",
+            updated: "",
+        }
+    7.Update API for Task
+        http://localhost:3001/saveData/{id}
+         Request method : PUT
+        useage : To Update the Existing Task using the task id
+        should be pass a payload and pass the task id
+        payload = {
+            taskName:"",
+            assignee:"",
+            status:"",
+            reporter: "",
+            created: "",
+            updated: "",
+        }
