@@ -11,7 +11,7 @@ To get started with this project, you need to install the required dependencies.
 
 3. **Navigate into the project directory**:
 
-    cd Task-Management-master
+    cd TaskManagement
 
 4. **Install the dependencies using npm**:
     npm install
