@@ -5,6 +5,8 @@ import { statusOption } from '../app/mockData.js';
 import { getDate } from "../app/helper.js";
 import Button from 'react-bootstrap/Button';
 const CreateTask = (props) => {
+    const packageJson = require('../../package.json');
+    const proxy = packageJson.proxy;
     const { closeBtnFuc, actionType, getData, listAPICall } = props;
     const {username} = JSON.parse(localStorage.getItem("userDetails")) || {};
     const registerUser = JSON.parse(localStorage.getItem("registerUser")) || [];
@@ -72,7 +74,7 @@ const CreateTask = (props) => {
             updated: getDate(),
         }
         if (valid) {
-            fetch(`http://localhost:3001/saveData${getData ? `/${getData.id}` : ''}`, {
+            fetch(`http://localhost:${proxy}/saveData${getData ? `/${getData.id}` : ''}`, {
                 method: getData ? 'PUT' : 'POST',
                 headers: {
                     'Content-Type': 'application/json'

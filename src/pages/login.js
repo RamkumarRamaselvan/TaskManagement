@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const SignIn = (props) => {
   const { onLogin } = props;
+  const packageJson = require('../../package.json');
+  const proxy = packageJson.proxy;
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const handleInputChange = (e) => {
@@ -13,7 +15,7 @@ const SignIn = (props) => {
 
   const getUserList = async() => {
     try {
-      const response = await fetch(`http://localhost:3001/users`, {
+      const response = await fetch(`http://localhost:${proxy}/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +35,7 @@ const SignIn = (props) => {
     e.preventDefault();
     const {username,password} =credentials;
     try {
-      const response = await fetch(`http://localhost:3001/users?username=${username}`);
+      const response = await fetch(`http://localhost:${proxy}/users?username=${username}`);
   
       if (!response.ok) throw new Error("Invalid credentials");
       const data = await response.json();

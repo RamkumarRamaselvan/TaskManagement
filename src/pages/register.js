@@ -4,6 +4,8 @@ import { registerInput} from "../app/mockData.js";
 import { allowNumericOnly } from '../app/helper.js'; 
 import { useNavigate } from 'react-router-dom';
 const RegisterPage = () => {
+  const packageJson = require('../../package.json');
+  const proxy = packageJson.proxy;
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -85,7 +87,7 @@ const RegisterPage = () => {
 
   const getUserDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/users`);
+      const response = await fetch(`http://localhost:${proxy}/users`);
 
       if (!response.ok) throw new Error("Invalid credentials");
       const data = await response.json();
@@ -101,7 +103,7 @@ const RegisterPage = () => {
     const valid = validate();
     if (valid) {
       try {
-        const response = await fetch(`http://localhost:3001/users`, {
+        const response = await fetch(`http://localhost:${proxy}/users`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

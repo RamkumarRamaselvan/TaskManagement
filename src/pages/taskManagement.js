@@ -5,6 +5,8 @@ import CustomTable from "../Component/Table/table.js";
 import TopNavigation from "./navigation.js";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 const TaskTable = () => {
+    const packageJson = require('../../package.json');
+    const proxy = packageJson.proxy;
     const [openPopup, setOpenPopup] = useState(false);
     const [tableData, setTableData] = useState([]);
     const [action, setAction] = useState(true);
@@ -13,7 +15,7 @@ const TaskTable = () => {
         listAPICall();
     }, []);
     const listAPICall = () => {
-        fetch('http://localhost:3001/saveData', {
+        fetch(`http://localhost:${proxy}/saveData`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,7 +40,7 @@ const TaskTable = () => {
         setOpenPopup(false);
     }
     const handleDelete = (id) => {
-        fetch(`http://localhost:3001/saveData/${id}`, {
+        fetch(`http://localhost:${proxy}/saveData/${id}`, {
             method: 'DELETE'
         })
             .then(() => {
