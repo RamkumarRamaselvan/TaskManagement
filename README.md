@@ -29,6 +29,9 @@ if you want to change the JSON server post goto package.json change the "proxy" 
 }
 this comment using to run the JSON server so need to change the port in the comment.
 
+**Login**
+default username : user123
+        password : user123
 
 ### API Used in the Project
 
