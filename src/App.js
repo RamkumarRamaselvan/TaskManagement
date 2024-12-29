@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { authRoutes } from "./app/router.js";
-import SignIn from "./Assessment/login.js";
-import TopNavigation from "./Assessment/topNav.js";
+import SignIn from "./pages/login.js";
+import TopNavigation from "./pages/navigation.js";
 import "./app/CSS/internal.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token")); // Initialize based on token
-  const [isLoading, setIsLoading] = useState(true); // To handle initial loading
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
-    setIsLoading(false); // Loading complete after token check
+    setIsLoading(false);
   }, []);
 
   const handleLogin = () => {
-    console.log(isLoggedIn);
     setIsLoggedIn(true);
   };
-
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("token");
+    localStorage.removeItem("userDetails");
+    localStorage.removeItem("registerUser")
   };
 
   if (isLoading) {
@@ -41,11 +41,11 @@ function App() {
               isLoggedIn ? <Navigate to="/profile" replace /> : <SignIn onLogin={handleLogin} />
             }
           />
-          {authRoutes.map((route) => (
+          {authRoutes?.map((route) => (
             <Route
               key={route.key}
               path={route.path}
-              element={isLoggedIn ? route.component : <Navigate to="/" replace />}
+              element={isLoggedIn ? route.component :route.path=="/register"?route.component: <Navigate to="/" replace />}
             />
           ))}
         </Routes>

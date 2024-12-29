@@ -14,7 +14,7 @@ const CustomDropDown = (props) => {
         <section className="mb-10">
             {label && <label className={customlabelClassName}>{label}</label>}
             <Form.Select name={name} id={id} value={value} onChange={onChange}>
-            {option.map((data,optionIndex)=>{
+            {option?.map((data,optionIndex)=>{
                 return (
                     <option key={optionIndex} value={data.value}>{data.label}</option>
                 )

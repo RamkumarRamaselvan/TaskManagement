@@ -56,7 +56,7 @@ const CustomTable = (props) => {
                     <thead>
                         <tr>
                             <th>Sl.No</th>
-                            {columns.map((headers, columnIndex) => {
+                            {columns?.map((headers, columnIndex) => {
                                 return (
                                     <th key={columnIndex}>{headers.Header}</th>
                                 )
@@ -65,10 +65,10 @@ const CustomTable = (props) => {
                     </thead>
                     <tbody>
                         {tableData.length > 0 ? (
-                            tableData.map((rowData, rowIndex) => (
+                            tableData?.map((rowData, rowIndex) => (
                                 <tr key={rowIndex}>
                                     <td>{rowIndex + 1}</td>
-                                    {columns.map((columnData, columnIndex) => (
+                                    {columns?.map((columnData, columnIndex) => (
                                         <td key={columnIndex}>
                                             {columnData.Cell
                                                 ? columnData.Cell(

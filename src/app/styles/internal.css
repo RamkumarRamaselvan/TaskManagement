@@ -3,7 +3,7 @@ body{
     background-color: var(--color3) !important;
 }
 .wrapper{
-    padding: 10px 20px;
+    padding: 90px 10px 10px;
 }
 .profile_box{
     position: absolute;
@@ -17,6 +17,9 @@ body{
 }
 .profile_box a{
     display: flex;
+}
+.navbar .container{
+    margin: 10px;
 }
 .navigation{
     padding: 10px 20px;
@@ -66,9 +69,12 @@ body{
 .customInput{
     width: 100%;
     padding: 10px;
-    margin: 10px 0px;
-    border: 1px solid #ccc;
+    margin: 5px 0px;
+    border: 1px solid;
     border-radius: 4px;
+    background-color: var(--seconry-color) !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .profileCard{
@@ -79,6 +85,12 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: var(--seconry-color);
     color: var(--primary-color);
+}
+.profileCard.extra{
+    padding: 50px 20px;
+}
+.txt_center{
+    text-align: center;
 }
 .btn_Cover{
     text-align: end;
@@ -96,30 +108,85 @@ body{
     color:var(--seconry-color) !important;
 }
 .modal-body{
-    background-color: var(--color3);
+    background-color: var(--seconry-color);
     color: var(--primary-color);
     border-radius: 6px;
     border: 1px solid var(--primary-color);
 }
 .form-select{
-    background-color: #1a1a1a !important;
+    background-color: var(--seconry-color) !important;
     color: var(--primary-color) !important;
-    border-color: #1a1a1a !important;
+    border-color: var(--primary-color) !important;
 }
-.register_container{
-    margin: 50px;
-}
+/* .register_container{
+    margin: 100px 50px;
+} */
 input:disabled {
     cursor: default;
-    background-color: light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3));
+    background-color: var(--color3);
     color: var(--primary-color);
 }
 .input_cover{
     position: relative;
+    text-align: left;
+}
+.input_cover label{
+    color: var(--primary-color);
 }
 .error {
     position: absolute;
     top: 0;
     right: 10px;
     color: red;
+}
+select.form-select {
+    margin: 5px 0;
+    padding: 10px;
+}
+.remove-button-business.eyeIcon {
+    background-color: #7e5a5a00;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    color: var(--primary-color);
+    right: 4%;
+    top: 63%;
+    transform: translateY(-50%);
+}
+.profile_line {
+    margin: 15px;
+    display: flex;
+}
+.profile_line span {
+    min-width: 130px;
+    max-width: 550px;
+    margin-left: 10px;
+    word-wrap: break-word;
+}
+.profileImage{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.profile_link img{
+    width: 45px;
+    height: 45px;
+    margin: 0 10px;
+}
+.logout_icon{
+    font-size: 25px;
+    margin: 10px 0;
+    color: var(--primary-color);
+}
+a.nav-link {
+    color: var(--primary-color);
+}
+.nav-link:hover, .nav-link:focus{
+    color: #9f57a1 !important;
+}
+button a{
+    color: var(--seconry-color);
+    text-decoration:none;
+
 }

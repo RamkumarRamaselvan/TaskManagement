@@ -2,16 +2,14 @@ import React, { useEffect, useState } from "react";
 import CreateTask from "./createNew.js";
 import CustomModal from "../Component/Modal/modal.js";
 import CustomTable from "../Component/Table/table.js";
-import TopNavigation from "./topNav.js";
+import TopNavigation from "./navigation.js";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 const TaskTable = () => {
     const [openPopup, setOpenPopup] = useState(false);
     const [tableData, setTableData] = useState([]);
-    const [action,setAction]=useState(true);
-    const [getData,setGetData]=useState({});
+    const [action, setAction] = useState(true);
+    const [getData, setGetData] = useState({});
     useEffect(() => {
-        // const getdata = localStorage.getItem("saveData");
-        // console.log(getdata);
         listAPICall();
     }, []);
     const listAPICall = () => {
@@ -25,30 +23,30 @@ const TaskTable = () => {
             .then(data => setTableData(data))
             .catch(error => console.error('Error fetching data:', error));
     }
-    const handleCreateNew = (id,row) => {
+    const handleCreateNew = (id, row) => {
         setOpenPopup(true);
         setGetData(row);
 
-        setAction(id?false:true);
+        setAction(id ? false : true);
     }
     const handleModalBody = () => {
         return (
-            <CreateTask closeBtnFuc={handleCloseModal} actionType={action} getData={getData} listAPICall={listAPICall}/>
+            <CreateTask closeBtnFuc={handleCloseModal} actionType={action} getData={getData} listAPICall={listAPICall} />
         )
     }
     const handleCloseModal = () => {
         setOpenPopup(false);
     }
-    const handleDelete = (id) =>{
-        fetch(`http://localhost:3001/saveData/${id}`, { 
+    const handleDelete = (id) => {
+        fetch(`http://localhost:3001/saveData/${id}`, {
             method: 'DELETE'
-          })
-            .then(() =>{
-                 console.log('User deleted')
-                 listAPICall();
+        })
+            .then(() => {
+                alert("Task Deleted Successfully")
+                listAPICall();
             })
-            .catch(error => console.error('Error deleting user:', error));
-          
+            .catch(error => alert("something went wrong!"));
+
     }
     const btnData = [
         {
@@ -121,7 +119,7 @@ const TaskTable = () => {
                         <a title="Edit" >
                             <FiEdit
                                 className="edit-icon"
-                                onClick={() => {handleCreateNew(row.id,row)}}
+                                onClick={() => { handleCreateNew(row.id, row) }}
                             />
                         </a>
                     </div>
@@ -137,16 +135,24 @@ const TaskTable = () => {
             );
         },
     },
-
     ]
+    const statusOrder = ["Pending", "In Progress", "Completed"];
+    tableData.sort((a, b) => {
+        return statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
+    });
     return (
         <section className="wrapper">
-            <CustomTable
-                columns={tableRows}
-                data={tableData}
-                btnData={btnData}
-                isSearch={true}
-            />
+            <div className="register_container">
+                <div className="profileCard">
+                    <h2>Task Management</h2>
+                    <CustomTable
+                        columns={tableRows}
+                        data={tableData}
+                        btnData={btnData}
+                        isSearch={true}
+                    />
+                </div>
+            </div>
             <CustomModal
                 modalOpen={openPopup}
                 modalBody={() => handleModalBody()}

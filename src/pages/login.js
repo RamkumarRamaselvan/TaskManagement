@@ -11,7 +11,24 @@ const SignIn = (props) => {
     setCredentials({ ...credentials, [name]: value });
   };
 
-  
+  const getUserList = async() => {
+    try {
+      const response = await fetch(`http://localhost:3001/users`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      localStorage.setItem("registerUser",JSON.stringify(data));
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
+  }
   const handleLogin = async (e) => {
     e.preventDefault();
     const {username,password} =credentials;
@@ -22,22 +39,19 @@ const SignIn = (props) => {
       const data = await response.json();
       const psw = data.find((user) => user.password === password);
       const user = data.find((user) => user.username === username);
-      console.log(psw);
-      console.log(user);
       if (psw && user) {
         const token = btoa(`${user.username}:${user.password}`);
-        console.log(token);
         localStorage.setItem("token", token);
         localStorage.setItem("username",user.username);
+        localStorage.setItem("email",user.email);
+        localStorage.setItem("userDetails",JSON.stringify(user));
         alert("Login successful!");
         onLogin();
+        getUserList();
         navigate("/profile");
       } else {
         alert("Invalid credentials");
       }
-      console.log(data);
-      // localStorage.setItem("token", data.accessToken);
-      // alert("Login successful!");
      
     } catch (error) {
       // alert(error.message);
@@ -60,6 +74,7 @@ const SignIn = (props) => {
           <Input
             type="username"
             name="username"
+            label="Username"
             value={credentials.username}
             onChange={handleInputChange}
             placeholder="Username"
@@ -67,10 +82,13 @@ const SignIn = (props) => {
           <Input
             type="password"
             name="password"
+            label="Password"
             value={credentials.password}
             onChange={handleInputChange}
             placeholder="Password"
           />
+          <div><a href="/register">Register</a></div>
+          
           <button type="submit" className="login_btn" onClick={handleLogin}>
             Login
           </button>
